@@ -1,4 +1,4 @@
-package com.simso.simso.Controller;
+package com.simso.Controller;
 
 public class MemberForm {
     private String name;

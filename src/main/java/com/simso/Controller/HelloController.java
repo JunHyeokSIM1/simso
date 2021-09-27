@@ -1,4 +1,4 @@
-package com.simso.simso.Controller;
+package com.simso.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("hello")
+
 public class HelloController {
 
     @RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)

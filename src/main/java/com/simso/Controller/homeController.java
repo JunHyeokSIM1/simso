@@ -1,4 +1,4 @@
-package com.simso.simso.Controller;
+package com.simso.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
