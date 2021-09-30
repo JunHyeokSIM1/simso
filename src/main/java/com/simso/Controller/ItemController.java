@@ -4,11 +4,10 @@ package com.simso.Controller;
 import com.simso.domain.Item;
 import com.simso.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,10 +21,19 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-/*    @GetMapping("api/test")
+    @GetMapping("api/get")
     public ResponseEntity<?> getItem(Model model){
-        List<Item> items = i
+        List<Item> items =itemService.findItem();
 
-        return ResponseEntity.ok(model)
-    }*/
+        model.addAttribute("items", items);
+        return ResponseEntity.ok(model);
+    }
+
+    @PostMapping("api/item/add")
+    public ResponseEntity<?> addItem(@RequestBody Item item){
+
+        itemService.register(item);
+
+        return new ResponseEntity<>("{}", HttpStatus.CREATED);
+    }
 }
