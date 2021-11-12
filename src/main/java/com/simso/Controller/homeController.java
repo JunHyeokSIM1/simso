@@ -2,8 +2,6 @@ package com.simso.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class homeController {
@@ -12,5 +10,9 @@ public class homeController {
         return "/home";
     }
 
+    @GetMapping("/api")
+    public String api(){
+        return "/index";
+    }
 
 }

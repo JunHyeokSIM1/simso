@@ -10,7 +10,10 @@ import javax.persistence.EntityManager;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.*;
 import static org.assertj.core.api.Assertions.*;
+
 
 
 @SpringBootTest
@@ -70,5 +73,32 @@ class JpaItemRepositoryTest {
             System.out.println(M);
         }
     }
-    
+
+    @Test
+    public void 삭제(){
+
+        //given
+        Item item = new Item();
+        item.setName("deleteTest");
+        jpaItemRepository.save(item);
+
+
+        List<Item>  list = jpaItemRepository.findAll();
+
+        for (Item a : list) {
+            System.out.println("======================");
+            System.out.println(a.getName());
+        }
+
+
+
+        //given
+        Item result = jpaItemRepository.findByname("deleteTest").get();
+
+        jpaItemRepository.delete(result.getId());
+
+
+
+    }
+
 }

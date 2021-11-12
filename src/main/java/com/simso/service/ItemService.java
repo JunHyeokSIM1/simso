@@ -40,4 +40,9 @@ public class ItemService {
     public Optional<Item> findOne(Long itemId){
         return itemRepository.findByid(itemId);
     }
+
+
+    public  void DeleteItem(Long itemId){
+        itemRepository.delete(itemId);
+    }
 }

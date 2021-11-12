@@ -42,5 +42,15 @@ public class JpaItemRepository implements ItemRepository{
     public List<Item> findAll() {
         return em.createQuery("select m from Item m", Item.class).getResultList();
     }
+
+    @Override
+    public void delete(Long id) {
+
+        Item item = em.find(Item.class, id);
+
+        em.remove(item);
+    }
+
+
 }
 
