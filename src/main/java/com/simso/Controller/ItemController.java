@@ -23,11 +23,12 @@ public class ItemController {
 
     @GetMapping("api/get")
     public ResponseEntity<?> getItem(Model model){
-        List<Item> items =itemService.findItem();
+        List<Item> items = itemService.findItem();
 
         model.addAttribute("items", items);
         return ResponseEntity.ok(model);
     }
+
 
     @PostMapping("api/item/add")
     public ResponseEntity<?> addItem(@RequestBody Item item){
@@ -36,8 +37,5 @@ public class ItemController {
 
         return new ResponseEntity<>("{}", HttpStatus.CREATED);
     }
-
-
-
 
 }
