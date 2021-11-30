@@ -51,6 +51,5 @@ public class JpaItemRepository implements ItemRepository{
         em.remove(item);
     }
 
-
 }
 
