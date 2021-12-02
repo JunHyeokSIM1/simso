@@ -15,7 +15,6 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.assertj.core.api.Assertions.*;
 
 
-
 @SpringBootTest
 @Transactional
 class JpaItemRepositoryTest {
@@ -24,7 +23,7 @@ class JpaItemRepositoryTest {
     JpaItemRepository jpaItemRepository;
 
     @Test
-    public void save(){
+    public void save() {
 
         //given
         Item item = new Item();
@@ -41,7 +40,7 @@ class JpaItemRepositoryTest {
     }
 
     @Test
-    public void findName(){
+    public void findName() {
         Item item = new Item();
         item.setName("testItem2");
         jpaItemRepository.save(item);
@@ -58,7 +57,7 @@ class JpaItemRepositoryTest {
     }
 
     @Test
-    public void findAll(){
+    public void findAll() {
 
         Item item2 = new Item();
         item2.setName("testItem3");
@@ -75,7 +74,7 @@ class JpaItemRepositoryTest {
     }
 
     @Test
-    public void 삭제(){
+    public void 삭제() {
 
         //given
         Item item = new Item();
@@ -83,7 +82,7 @@ class JpaItemRepositoryTest {
         jpaItemRepository.save(item);
 
 
-        List<Item>  list = jpaItemRepository.findAll();
+        List<Item> list = jpaItemRepository.findAll();
 
         for (Item a : list) {
             System.out.println("======================");
@@ -91,13 +90,34 @@ class JpaItemRepositoryTest {
         }
 
 
-
         //given
         Item result = jpaItemRepository.findByname("deleteTest").get();
 
         jpaItemRepository.delete(result.getId());
 
+    }
 
+    @Test
+    public void 업데이트(){
+
+//        //given
+//        Item item = new Item();
+//        item.setName("testItem2");
+//        jpaItemRepository.save(item);
+//
+//
+//
+//        //when
+//        Item result = jpaItemRepository.findByname("testItem2").get();
+
+        Item result = jpaItemRepository.findByname("test2").get();
+
+        result.setName("tetetett");
+
+        jpaItemRepository.updateByid(result);
+        //then
+
+//        assertThat(result).isEqualTo(item);
 
     }
 

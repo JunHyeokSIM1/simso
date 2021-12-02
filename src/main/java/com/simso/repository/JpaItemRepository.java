@@ -14,7 +14,6 @@ public class JpaItemRepository implements ItemRepository{
         this.em = em;
     }
 
-
     @Override
     public Item save(Item item) {
         em.persist(item);
@@ -49,8 +48,16 @@ public class JpaItemRepository implements ItemRepository{
         Item item = em.find(Item.class, id);
 
         em.remove(item);
+
     }
 
+    @Override
+    public Item updateByid(Item item) {
+
+        em.persist(item);
+
+        return item;
+    }
 
 }
 
