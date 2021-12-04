@@ -46,9 +46,19 @@ class JpaUserRepositoryTest {
     }
 
     @Test
-    public void 버전(){
-        System.out.println(junit.runner.Version.id());
+    public void findName(){
+        //given
 
+        User user = new User();
+        user.setUsername("test12");
+        //when
+
+        User result = userRepository.findByname(user.getUsername()).get();
+
+        //Then
+
+        System.out.println("================================");
+        System.out.println(result.getUsername());
     }
 
 }

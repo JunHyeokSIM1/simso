@@ -2,12 +2,10 @@ package com.simso.repository;
 
 import com.simso.domain.Item;
 import com.simso.domain.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +35,13 @@ public class JpaUserRepository implements UserRepository {
 
 
     @Override
-    public Optional<User> findByname(String name) {
-        return Optional.empty();
+    public Optional<User> findByname(String username) {
+
+        List<User> result = em.createQuery("select u from User u where u.username = :USER_NAME", User.class)
+                .setParameter("USER_NAME", username)
+                .getResultList();
+
+        return result.stream().findAny();
     }
 
     @Override
