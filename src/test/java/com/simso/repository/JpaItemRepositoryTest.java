@@ -4,6 +4,7 @@ import com.simso.domain.Item;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -23,6 +24,7 @@ class JpaItemRepositoryTest {
     JpaItemRepository jpaItemRepository;
 
     @Test
+    @Rollback(value = false)
     public void save() {
 
         //given
@@ -98,26 +100,22 @@ class JpaItemRepositoryTest {
     }
 
     @Test
-    public void 업데이트(){
+    @Rollback(value = false)
+    public void 업데이트() {
 
-//        //given
-//        Item item = new Item();
-//        item.setName("testItem2");
-//        jpaItemRepository.save(item);
-//
-//
-//
-//        //when
-//        Item result = jpaItemRepository.findByname("testItem2").get();
+        //given
+        Item item = new Item();
+        item.setName("testItem2");
+        jpaItemRepository.save(item);
 
-        Item result = jpaItemRepository.findByname("test2").get();
+        //when
+        Item result = jpaItemRepository.findByname("testItem2").get();
 
-        result.setName("tetetett");
+        result.setName("update");
 
-        jpaItemRepository.updateByid(result);
+        Item updateResult = jpaItemRepository.updateByid(result);
         //then
-
-//        assertThat(result).isEqualTo(item);
+        assertThat(result).isEqualTo(updateResult);
 
     }
 

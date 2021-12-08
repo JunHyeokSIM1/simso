@@ -54,9 +54,10 @@ public class JpaItemRepository implements ItemRepository{
     @Override
     public Item updateByid(Item item) {
 
-        em.persist(item);
+        Item updateItem = em.find(Item.class , item.getId());
+        em.persist(updateItem);
 
-        return item;
+        return updateItem;
     }
 
 }
