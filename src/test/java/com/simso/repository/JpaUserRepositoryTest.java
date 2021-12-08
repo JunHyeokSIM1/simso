@@ -88,4 +88,26 @@ class JpaUserRepositoryTest {
 
     }
 
+    @Test
+    @Rollback(value = false)
+    public void 업데이트(){
+
+        User user = new User();
+        user.setUsername("update");
+
+        userRepository.save(user);
+
+        User result = userRepository.findByname("update").get();
+
+        result.setUsername("updateTest");
+
+        User user1 = userRepository.updateByid(result);
+
+
+        //when
+
+        assertThat(result).isEqualTo(user1);
+
+    }
+
 }
