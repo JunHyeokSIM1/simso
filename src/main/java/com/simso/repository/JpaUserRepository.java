@@ -59,7 +59,11 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public User updateByid(User user) {
-        return null;
+        User updateUser = em.find(User.class, user.getId());
+
+        em.persist(updateUser);
+
+        return updateUser;
     }
 
 }
