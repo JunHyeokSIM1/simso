@@ -11,6 +11,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -42,33 +43,67 @@ class UserServiceTest {
         assertThat(user.getUsername()).isEqualTo(findUser.getUsername());
     }
 
-//    @Test
-//    @Transactional
-//    public void 중복_예외_처리(){
-//        //give
-//        Item item = new Item();
-//        item.setName("testResister2");
-//
-//        Item item2 = new Item();
-//        item2.setName("testResister2");
-//
-//        //when
-//        itemService.register(item);
-//        IllegalStateException e = assertThrows(IllegalStateException.class, () ->itemService.register(item));
-//
-//        //then
-//        assertThat(e.getMessage()).isEqualTo("상품 코드가 중복됩니다.");
-//
-//    }
-//
-//    @Test
-//    public void 상품찾기(){
-//
-//        List<Item> result = itemService.findItem();
-//        assertNotNull(result);
-//
-//    }
-//
+    @Test
+    @Transactional
+    public  void 중복_예외_처리(){
+        //given
+        User user = new User();
+        user.setUsername("중복유저테스트");
+
+        User user2 = new User();
+        user.setUsername("중복유저테스트");
+
+        //when
+        userService.register(user);
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> userService.register(user));
+        //then
+        assertThat(e.getMessage()).isEqualTo("user 이름이 중복됩니다");
+
+    }
+
+    @Test
+    public void 모든유저찾기(){
+
+        //given
+        List<User> result = userService.findUser();
+
+        //then
+        for (User user : result) {
+            System.out.println(user.getUsername());
+        }
+
+    }
+    @Test
+    @Transactional
+    public  void 유저찾기(){
+        //given
+        User user = new User();
+        user.setUsername("findTestUser");
+
+        //when
+
+        Long save = userService.register(user);
+          userService.findOne(user.getId());
+
+        User findUser = userService.findOne(save).get();
+
+        //then
+        assertThat(user.getUsername()).isEqualTo(findUser.getUsername());
+    }
+
+    @Test
+    @Transactional
+    public void 삭제(){
+
+        //given
+        User user = new User();
+        user.setUsername("삭제테스트아이디");
+
+        userService.register(user);
+
+        userService.DeleteUser(user.getId());
+
+    }
 
 
 }
