@@ -1,40 +1,33 @@
 package com.simso.domain;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@NoArgsConstructor
 public class User {
 
     @Id   @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(name = "USER_NAME")
+    @Column(name = "user_name")
     private String username;
 
     @Column(name = "password")
     private String password;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
+    @Builder
+    public User(String username, String password) {
         this.username = username;
+        this.password = password;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+    public void update(String username, String password){
+        this.username = username;
         this.password = password;
     }
 }
