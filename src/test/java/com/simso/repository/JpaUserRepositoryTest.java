@@ -16,9 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class JpaUserRepositoryTest {
 
-//    @Autowired
-//    UserRepository userRepository;
-
     @Autowired
     JpaUserRepository userRepository;
 

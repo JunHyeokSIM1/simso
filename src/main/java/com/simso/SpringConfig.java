@@ -1,11 +1,7 @@
 package com.simso;
 
 
-import com.simso.Controller.MemberForm;
-import com.simso.repository.ItemRepository;
-import com.simso.repository.JpaItemRepository;
-import com.simso.repository.JpaUserRepository;
-import com.simso.repository.UserRepository;
+import com.simso.repository.*;
 import com.simso.service.ItemService;
 import com.simso.service.UserService;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +15,13 @@ public class SpringConfig {
 
     private final DataSource dataSource;
     private final EntityManager em;
+    private final UserRepository userRepository;
 
 
-    public SpringConfig(DataSource dataSource, EntityManager em) {
+    public SpringConfig(DataSource dataSource, EntityManager em, UserRepository userRepository) {
         this.dataSource = dataSource;
         this.em = em;
+        this.userRepository = userRepository;
 
     }
 
@@ -34,7 +32,7 @@ public class SpringConfig {
 
     @Bean
     public UserService userService() {
-        return new UserService(userRepository());
+        return new UserService(userRepository);
     }
 
 
@@ -44,9 +42,9 @@ public class SpringConfig {
 
     }
 
-    @Bean
-    public UserRepository userRepository() {
-        return new JpaUserRepository(em);
-
-    }
+//    @Bean
+//    public UserRepositoryOld userRepository() {
+//        return new JpaUserRepository(em);
+//
+//    }
 }

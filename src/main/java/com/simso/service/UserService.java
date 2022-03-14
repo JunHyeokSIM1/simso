@@ -1,11 +1,11 @@
 package com.simso.service;
 
-import com.simso.domain.Item;
 import com.simso.domain.User;
 import com.simso.dto.UserResponseDto;
 import com.simso.dto.UserSaveRequestDto;
 import com.simso.dto.UserUpdateRequestDto;
 import com.simso.repository.UserRepository;
+import com.simso.repository.UserRepositoryOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +22,7 @@ public class UserService {
 
         this.userRepository = userRepository;
     }
+
     public Long register(UserSaveRequestDto requestDto){
 
         getValidateDuplicateUser(requestDto);
@@ -31,7 +32,7 @@ public class UserService {
 
 
     private  void getValidateDuplicateUser(UserSaveRequestDto requestDto){
-        userRepository.findByname(requestDto.getUsername())
+        userRepository.findByUsername(requestDto.getUsername())
                 .ifPresent(m ->{
                     throw new IllegalStateException("user 이름이 중복됩니다");
                 });
@@ -43,16 +44,17 @@ public class UserService {
     }
 
     public Optional<User> findOne(Long id) {
-        return userRepository.findByid(id);
+        return userRepository.findById(id);
     }
 
     public void DeleteUser(Long userId) {
-        userRepository.delete(userId);
+        Optional<User> user = userRepository.findById(userId);
+        userRepository.delete(user.get());
     }
 
 
     public Long update(Long id, UserUpdateRequestDto requestDto) {
-        User user = userRepository.findByid(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(()->
                         new IllegalArgumentException("해당 id가 없습니다.id=" + id));
 
@@ -61,7 +63,7 @@ public class UserService {
     }
 
     public UserResponseDto findById(Long id){
-        User user = userRepository.findByid(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() ->
                         new IllegalArgumentException("해당 id가 없습니다.id=" + id));
 

@@ -3,7 +3,7 @@ package com.simso.Controller.api;
 import com.simso.domain.User;
 import com.simso.dto.UserSaveRequestDto;
 import com.simso.dto.UserUpdateRequestDto;
-import com.simso.repository.UserRepository;
+import com.simso.repository.UserRepositoryOld;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ class UserApiControllerTest {
     private TestRestTemplate testRestTemplate;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryOld userRepository;
 
     @PersistenceContext
     EntityManager em;
@@ -55,14 +55,10 @@ class UserApiControllerTest {
 
         //when
         ResponseEntity<Long> responseEntity = testRestTemplate.postForEntity(url, requestDto, Long.class);
-//        public <T> ResponseEntity<T> postForEntity(String url, Object request, Class<T> responseType,
-//                Object... urlVariables) throws RestClientException {
-//            return this.restTemplate.postForEntity(url, request, responseType, urlVariables);
-//        }
+
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
-        //Verifies that the actual value is greater than the given one.
 
         List<User> all = userRepository.findAll();
         assertThat(all.get(0).getUsername()).isEqualTo(username);
