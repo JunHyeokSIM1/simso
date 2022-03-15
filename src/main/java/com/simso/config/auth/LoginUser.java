@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.PARAMETER)   //어노테이션이 생성될수 있는 위치
+@Target(ElementType.PARAMETER)   //어노테이션이 생성될수 있는 위치 //매개변수 선언
 @Retention(RetentionPolicy.RUNTIME)
-public class LoginUser {
+public @interface LoginUser {
 }

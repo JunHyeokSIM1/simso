@@ -1,5 +1,6 @@
 package com.simso.Controller;
 
+import com.simso.config.auth.LoginUser;
 import com.simso.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,12 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class homeController {
 
-    private final HttpSession httpSession;
+
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model, @LoginUser SessionUser user){
 
-        SessionUser user = (SessionUser)  httpSession.getAttribute("user");
+
 
         if(user != null){
             model.addAttribute("userName" , user.getName());
