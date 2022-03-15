@@ -1,10 +1,8 @@
 package com.simso.service;
 
-import com.simso.domain.Item;
 import com.simso.domain.User;
 import com.simso.dto.UserSaveRequestDto;
-import com.simso.repository.ItemRepository;
-import com.simso.repository.UserRepository;
+import com.simso.repository.UserRepositoryOld;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +10,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,7 +23,7 @@ class UserServiceTest {
     UserService userService;
 
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryOld userRepository;
 
 
     @Test

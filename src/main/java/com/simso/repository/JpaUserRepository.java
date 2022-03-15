@@ -1,6 +1,5 @@
 package com.simso.repository;
 
-import com.simso.domain.Item;
 import com.simso.domain.User;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class JpaUserRepository implements UserRepository {
+public class JpaUserRepository implements UserRepositoryOld {
 
     private final EntityManager em;
 

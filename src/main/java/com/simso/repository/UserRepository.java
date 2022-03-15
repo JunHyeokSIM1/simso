@@ -1,21 +1,14 @@
 package com.simso.repository;
 
 import com.simso.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository {
-    User save(User user);
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByid(Long id);
+   Optional<User> findByUsername(String username);
 
-    Optional<User> findByname(String name);
-
-    List<User> findAll();
-
-    void delete(Long id);
-
-    User updateByid(User user);
-
+   Optional<User> findByEmail(String email);
 }
