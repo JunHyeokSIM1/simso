@@ -16,6 +16,9 @@ spring:
         #show_sql: true
         format_sql: true
         default_batch_fetch_size: 100
+  session:
+    store-type: jdbc
+    jdbc.initialize-schema: always # 테이블 자동생성
 logging:
   level:
     org.hibernate.SQL: debug
