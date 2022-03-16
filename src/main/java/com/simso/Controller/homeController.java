@@ -18,8 +18,6 @@ public class homeController {
     @GetMapping("/")
     public String home(Model model, @LoginUser SessionUser user){
 
-
-
         if(user != null){
             model.addAttribute("userName" , user.getName());
         }
