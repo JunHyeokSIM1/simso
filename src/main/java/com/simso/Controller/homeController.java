@@ -7,26 +7,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequiredArgsConstructor
 public class homeController {
 
 
-
     @GetMapping("/")
-    public String home(Model model, @LoginUser SessionUser user){
+    public String home(Model model, @LoginUser SessionUser user) {
 
-        if(user != null){
-            model.addAttribute("userName" , user.getName());
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
         }
         return "/home";
     }
 
     @GetMapping("/api")
-    public String api(){
+    public String api() {
         return "/index";
     }
-
 }
