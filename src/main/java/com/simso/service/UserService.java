@@ -5,7 +5,6 @@ import com.simso.dto.UserResponseDto;
 import com.simso.dto.UserSaveRequestDto;
 import com.simso.dto.UserUpdateRequestDto;
 import com.simso.repository.UserRepository;
-import com.simso.repository.UserRepositoryOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

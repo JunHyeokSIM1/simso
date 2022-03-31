@@ -2,7 +2,6 @@ package com.simso.service;
 
 import com.simso.domain.User;
 import com.simso.dto.UserSaveRequestDto;
-import com.simso.repository.UserRepositoryOld;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

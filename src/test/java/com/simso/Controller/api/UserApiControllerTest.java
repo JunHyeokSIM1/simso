@@ -3,7 +3,6 @@ package com.simso.Controller.api;
 import com.simso.domain.User;
 import com.simso.dto.UserSaveRequestDto;
 import com.simso.dto.UserUpdateRequestDto;
-import com.simso.repository.UserRepositoryOld;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
