@@ -1,7 +1,5 @@
 package com.simso.service;
 
-import com.simso.domain.Item;
-import com.simso.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
