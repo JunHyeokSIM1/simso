@@ -1,4 +1,4 @@
-package com.simso.Controller.api;
+package com.simso.controller.api;
 
 import com.simso.domain.Posts;
 import com.simso.dto.post.PostsSaveRequestDto;
@@ -51,7 +51,7 @@ class PostsApiControllerTest {
                 .build();
 
 
-        String url = "http://localhost:" + port + "/api/posts";
+        String url = "http://localhost:" + port + "/api/v1/posts";
 
         //when
         ResponseEntity<Long> responseEntity = testRestTemplate.postForEntity(url, requestDto, Long.class);

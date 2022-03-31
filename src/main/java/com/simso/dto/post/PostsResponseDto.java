@@ -1,7 +1,6 @@
 package com.simso.dto.post;
 
 import com.simso.domain.Posts;
-import com.simso.domain.User;
 import lombok.Getter;
 
 @Getter
