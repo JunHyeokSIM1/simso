@@ -2,7 +2,6 @@ package com.simso;
 
 
 import com.simso.repository.*;
-import com.simso.service.ItemService;
 import com.simso.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,10 +24,6 @@ public class SpringConfig {
 
     }
 
-    @Bean
-    public ItemService itemService() {
-        return new ItemService(itemRepository());
-    }
 
     @Bean
     public UserService userService() {
@@ -36,15 +31,4 @@ public class SpringConfig {
     }
 
 
-    @Bean
-    public ItemRepository itemRepository() {
-        return new JpaItemRepository(em);
-
-    }
-
-//    @Bean
-//    public UserRepositoryOld userRepository() {
-//        return new JpaUserRepository(em);
-//
-//    }
 }

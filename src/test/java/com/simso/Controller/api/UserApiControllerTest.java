@@ -3,6 +3,7 @@ package com.simso.Controller.api;
 import com.simso.domain.User;
 import com.simso.dto.UserSaveRequestDto;
 import com.simso.dto.UserUpdateRequestDto;
+import com.simso.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ class UserApiControllerTest {
     private TestRestTemplate testRestTemplate;
 
     @Autowired
-    private UserRepositoryOld userRepository;
+    private UserRepository userRepository;
 
     @PersistenceContext
     EntityManager em;
