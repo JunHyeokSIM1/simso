@@ -1,4 +1,4 @@
-package com.simso.Controller;
+package com.simso.controller;
 
 import com.simso.config.auth.LoginUser;
 import com.simso.config.auth.dto.SessionUser;

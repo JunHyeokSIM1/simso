@@ -1,14 +1,27 @@
-import React, { Component } from 'react';
-import TodoListTemplate from './components/TodoListTemplate';
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import RoadmapTemplate from './components/RoadmapTemplate';
+import RoadmapHead from './components/RoadmapHead';
+import RoadmapItem from './components/RoadmapItem';
+import RoadmapItemRegister from './components/RoadmaRegister';
 
-class App extends Component {
-  render() {
-    return (
-      <TodoListTemplate>
-        템플릿 완성
-      </TodoListTemplate>
-    );
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #e9ecef;
   }
+`;
+
+function App() {
+  return (
+    <>
+      <GlobalStyle></GlobalStyle>
+      <RoadmapTemplate>
+        <RoadmapHead></RoadmapHead>
+        <RoadmapItem></RoadmapItem>
+        <RoadmapItemRegister></RoadmapItemRegister>
+      </RoadmapTemplate>
+    </>
+  );
 }
 
 export default App;

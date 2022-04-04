@@ -32,7 +32,7 @@ public class UserRepositoryTest {
         Optional<User> result = userRepository.findById(user.getId());
 
         //Then
-        assertThat(user).isEqualTo(result.get());
+        assertThat(user.getUsername()).isEqualTo(result.get().getUsername());
 
     }
 }

@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**", "/h2-console").permitAll()            // 권한 관리 대상을 지정하는 옵션
                                                                         // URL HTTP 메소드별로 관리가 가능
                                                                         // "/" 등 지정된 URL들은 permiAll() 옵션을 통해 전체 열람 권한
-                .antMatchers("/api/**").hasRole(Role.USER.name()) // USER  권한을 가진 사람만 가능하도록
+                .antMatchers("/api/v1/**").hasRole(Role.USER.name()) // USER  권한을 가진 사람만 가능하도록
                 .anyRequest().authenticated() // 설정된 값들 이외 나머지 URL authenticated() 모두 인증된 사용자들에게 만 허용
                 .and()
                     .logout()

@@ -1,4 +1,4 @@
-package com.simso.Controller.api;
+package com.simso.controller.api;
 
 import com.simso.dto.UserResponseDto;
 import com.simso.dto.UserSaveRequestDto;
