@@ -2,6 +2,7 @@ package com.simso.service.post;
 
 import com.simso.domain.Posts;
 import com.simso.domain.User;
+import com.simso.dto.PostsListResponseDto;
 import com.simso.dto.UserResponseDto;
 import com.simso.dto.UserUpdateRequestDto;
 import com.simso.dto.post.PostsResponseDto;
@@ -11,6 +12,9 @@ import com.simso.repository.PostsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -38,5 +42,12 @@ public class PostService {
                         new IllegalArgumentException("해당 게시글이 없습니다.id=" + id));
 
         return new PostsResponseDto(posts);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
