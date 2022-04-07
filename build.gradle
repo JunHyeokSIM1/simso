@@ -37,6 +37,10 @@ dependencies {
 	implementation ('org.springframework.session:spring-session-jdbc')
 
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.3'
+
 }
 dependencyManagement {
 	imports {
