@@ -21,8 +21,5 @@ public class homeController {
         return "/home";
     }
 
-    @GetMapping("/api")
-    public String api() {
-        return "/index";
-    }
+
 }
