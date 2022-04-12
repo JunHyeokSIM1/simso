@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,6 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "user_name")
@@ -32,6 +35,9 @@ public class User {
     @Column(name = "role")
     @NotNull
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Roadmap> roadmapList = new ArrayList<>();
 
     @Builder
     public User(String username, String password, String email, String picture, Role role) {
