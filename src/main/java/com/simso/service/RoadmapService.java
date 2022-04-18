@@ -1,11 +1,10 @@
 package com.simso.service;
 
-import com.simso.domain.Posts;
 import com.simso.domain.Roadmap;
 import com.simso.domain.User;
-import com.simso.dto.post.PostsUpdateRequestDto;
 import com.simso.dto.roadmap.RoadmapResponseDto;
 import com.simso.dto.roadmap.RoadmapSaveRequestDto;
+import com.simso.dto.roadmap.RoadmapUpdateRequestDto;
 import com.simso.repository.RoadmapRepository;
 import com.simso.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -51,12 +50,12 @@ public class RoadmapService {
      *  로드맵 변경
      * */
     @Transactional
-    public Long update(Long id, PostsUpdateRequestDto requestDto) {
-        Posts posts = postRepository.findById(id)
+    public Long update(Long id, RoadmapUpdateRequestDto requestDto) {
+        Roadmap roadmap = roadmapRepository.findById(id)
                 .orElseThrow(()->
                         new IllegalArgumentException("해당 게시글 없습니다.id=" + id));
 
-        posts.update(requestDto.getTitle(), requestDto.getContent());
+        roadmap.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
 }

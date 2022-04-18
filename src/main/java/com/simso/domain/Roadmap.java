@@ -50,4 +50,14 @@ public class Roadmap {
         roadmap.setUser(user);
         return  roadmap;
     }
+
+    /*
+    *  업데이트 로드맵
+    */
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+
 }
