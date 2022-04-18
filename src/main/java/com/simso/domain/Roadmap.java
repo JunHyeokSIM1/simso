@@ -42,7 +42,9 @@ public class Roadmap {
         user.getRoadmapList().add(this);
     }
 
-
+    /*
+     *  생성 로드맵
+     */
     public static Roadmap createRoadmap(User user, RoadmapSaveRequestDto requestDto) {
         Roadmap roadmap = requestDto.toEntity();
         roadmap.setUser(user);

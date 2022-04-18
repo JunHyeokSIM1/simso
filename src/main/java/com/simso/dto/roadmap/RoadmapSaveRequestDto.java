@@ -1,7 +1,6 @@
 package com.simso.dto.roadmap;
 
 import com.simso.domain.Roadmap;
-import com.simso.dto.UserResponseDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,13 +10,13 @@ import lombok.NoArgsConstructor;
 public class RoadmapSaveRequestDto {
     private String title;
     private String content;
-    private UserResponseDto userResponseDto;
+    private Long userId;
 
     @Builder
-    public RoadmapSaveRequestDto(String title, String content, UserResponseDto userResponseDto) {
+    public RoadmapSaveRequestDto(String title, String content, Long userId) {
         this.title = title;
         this.content = content;
-        this.userResponseDto = userResponseDto;
+        this.userId = userId;
     }
 
     public Roadmap toEntity() {
