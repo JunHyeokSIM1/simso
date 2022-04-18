@@ -6,6 +6,7 @@ import com.simso.domain.User;
 import com.simso.dto.UserResponseDto;
 import com.simso.dto.roadmap.RoadmapResponseDto;
 import com.simso.dto.roadmap.RoadmapSaveRequestDto;
+import com.simso.dto.roadmap.RoadmapUpdateRequestDto;
 import com.simso.repository.RoadmapRepository;
 import com.simso.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @SpringBootTest
 class RoadmapServiceTest {
@@ -70,6 +72,54 @@ class RoadmapServiceTest {
 
         //then
         assertThat(findAll.size()).isEqualTo(2);
+    }
+
+    @DisplayName("수정한다 로드맵을")
+    @Test
+    public void update() {
+        //given
+        Long roadmapEntity = createRoadmapEntity();
+        RoadmapUpdateRequestDto requestDto = new RoadmapUpdateRequestDto("업데이타이틀", "업데이트 컨텐트");
+
+        //when
+        Long updateId = roadmapService.update(roadmapEntity, requestDto);
+
+        //then
+        Optional<Roadmap> findId = roadmapRepository.findById(roadmapEntity);
+        Optional<Roadmap> findUpdateId = roadmapRepository.findById(updateId);
+
+        assertThat(findId.orElse(null).getContent()).
+                isEqualTo(findUpdateId.orElse(null).getContent());
+
+        assertThat(findId.orElse(null).getTitle()).
+                isEqualTo(findUpdateId.orElse(null).getTitle());
+
+    }
+
+    @DisplayName("수정상황에서 IllegalArgumentException 예외 발생")
+    @Test
+    public void updateIllegalArgumentException() {
+        //given
+        Long roadmapEntity = createRoadmapEntity();
+        RoadmapUpdateRequestDto requestDto = new RoadmapUpdateRequestDto("업데이타이틀", "업데이트 컨텐트");
+
+        //when
+        //then
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> roadmapService.update(1000L, requestDto));
+    }
+
+
+
+
+    // 로드맵 등록하고 저장하는 부분
+    private Long createRoadmapEntity() {
+        User user = createUser();
+        Optional<User> findUser = userRepository.findById(user.getId());
+        UserResponseDto responseDto = new UserResponseDto(findUser.orElse(null));
+
+        RoadmapSaveRequestDto requestDto = createRoadmapRequestDto(responseDto);
+        return roadmapService.register(requestDto);
     }
 
     // 로드맵 create save Request dto
