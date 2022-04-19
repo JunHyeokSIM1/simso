@@ -109,6 +109,21 @@ class RoadmapServiceTest {
                 .isThrownBy(() -> roadmapService.update(1000L, requestDto));
     }
 
+    @DisplayName("삭제한다 로드맵을")
+    @Test
+    public void remove() {
+        //given
+        Long roadmapEntity = createRoadmapEntity();
+
+        //when
+        roadmapService.remove(roadmapEntity);
+
+        //then
+        Optional<Roadmap> findId = roadmapRepository.findById(roadmapEntity);
+
+        assertThat(findId.orElse(null)).isNull();
+
+    }
 
 
 
