@@ -58,4 +58,13 @@ public class RoadmapService {
         roadmap.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
+
+    /*
+     * 로드맵 삭제
+     */
+    @Transactional
+    public void remove(Long id) {
+        roadmapRepository.deleteById(id);
+    }
+
 }
