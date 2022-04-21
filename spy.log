@@ -1,9 +1,0 @@
-1648964007584|1|statement|connection 34|url jdbc:h2:mem:41e25857-b520-4317-b2d4-d363891325c4|     drop table if exists posts CASCADE |     drop table if exists posts CASCADE 
-1648964007587|1|statement|connection 34|url jdbc:h2:mem:41e25857-b520-4317-b2d4-d363891325c4|     drop table if exists user CASCADE |     drop table if exists user CASCADE 
-1648964007588|0|statement|connection 34|url jdbc:h2:mem:41e25857-b520-4317-b2d4-d363891325c4|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
-1648969373153|0|statement|connection 36|url jdbc:h2:mem:ec15bfb3-8a2c-45dc-b7f4-127c15492b65|     drop table if exists posts CASCADE |     drop table if exists posts CASCADE 
-1648969373156|1|statement|connection 36|url jdbc:h2:mem:ec15bfb3-8a2c-45dc-b7f4-127c15492b65|     drop table if exists user CASCADE |     drop table if exists user CASCADE 
-1648969373156|0|statement|connection 36|url jdbc:h2:mem:ec15bfb3-8a2c-45dc-b7f4-127c15492b65|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
-1648969550091|1|statement|connection 30|url jdbc:h2:mem:1d21d40d-f741-45d5-81ce-ed90e48b4621|     drop table if exists posts CASCADE |     drop table if exists posts CASCADE 
-1648969550095|2|statement|connection 30|url jdbc:h2:mem:1d21d40d-f741-45d5-81ce-ed90e48b4621|     drop table if exists user CASCADE |     drop table if exists user CASCADE 
-1648969550096|0|statement|connection 30|url jdbc:h2:mem:1d21d40d-f741-45d5-81ce-ed90e48b4621|     drop sequence if exists hibernate_sequence|     drop sequence if exists hibernate_sequence
