@@ -1,13 +1,13 @@
 package com.simso.domain.roadmap.service;
 
 import com.simso.domain.roadmap.entity.Roadmap;
-import com.simso.domain.User;
+import com.simso.domain.user.entity.User;
 import com.simso.domain.roadmap.exception.RoadmapNotFoundException;
 import com.simso.domain.roadmap.dto.RoadmapResponseDto;
 import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
 import com.simso.domain.roadmap.dto.RoadmapUpdateRequestDto;
 import com.simso.domain.roadmap.repository.RoadmapRepository;
-import com.simso.repository.UserRepository;
+import com.simso.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
 package com.simso.domain.roadmap.entity;
 
-import com.simso.domain.User;
+import com.simso.domain.user.entity.User;
 import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
 import lombok.AccessLevel;
 import lombok.Builder;
