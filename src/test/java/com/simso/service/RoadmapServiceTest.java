@@ -125,7 +125,35 @@ class RoadmapServiceTest {
 
     }
 
+    @DisplayName("조회한다 단건 로드맵을")
+    @Test
+    public void findBySingleRoadMap() {
+        //given
+        Long roadmapEntity = createRoadmapEntity();
 
+        //when
+        RoadmapResponseDto singleRoadmap = roadmapService.findById(roadmapEntity);
+
+        //then
+        assertThat(singleRoadmap).isNotNull();
+        assertThat(singleRoadmap.getId()).isEqualTo(roadmapEntity);
+
+    }
+
+    @DisplayName("조회에서 예외 NoSuchElementException 발생")
+    @Test
+    public void findBySingleRoadMapNoSuchElementException() {
+        //given
+        Long roadmapEntity = createRoadmapEntity();
+
+        //when
+        RoadmapResponseDto singleRoadmap = roadmapService.findById(roadmapEntity);
+
+        //then
+        assertThat(singleRoadmap).isNotNull();
+        assertThat(singleRoadmap.getId()).isEqualTo(roadmapEntity);
+
+    }
 
     // 로드맵 등록하고 저장하는 부분
     private Long createRoadmapEntity() {
