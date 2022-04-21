@@ -1,5 +1,6 @@
 package com.simso.domain;
 
+import com.simso.domain.roadmap.entity.Roadmap;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,9 +1,9 @@
-package com.simso.controller.api;
+package com.simso.domain.roadmap.ui;
 
-import com.simso.dto.roadmap.RoadmapResponseDto;
-import com.simso.dto.roadmap.RoadmapSaveRequestDto;
-import com.simso.dto.roadmap.RoadmapUpdateRequestDto;
-import com.simso.service.RoadmapService;
+import com.simso.domain.roadmap.dto.RoadmapResponseDto;
+import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
+import com.simso.domain.roadmap.dto.RoadmapUpdateRequestDto;
+import com.simso.domain.roadmap.service.RoadmapService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ public class RoadmapApiController {
     private final RoadmapService roadmapService;
 
     @PostMapping("api/v1/roadmaps")
-    public Long save(@RequestBody RoadmapSaveRequestDto requestDto) {
+    public Long save(@RequestBody RoadmapSaveRequestDto requestDto) throws  Exception {
         return roadmapService.register(requestDto);
     }
 
@@ -31,7 +31,8 @@ public class RoadmapApiController {
     }
 
     @DeleteMapping("api/v1/roadmaps/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id)  {
         roadmapService.remove(id);
     }
+
 }

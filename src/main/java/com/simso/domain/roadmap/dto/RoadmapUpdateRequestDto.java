@@ -1,4 +1,4 @@
-package com.simso.dto.roadmap;
+package com.simso.domain.roadmap.dto;
 
 import lombok.Builder;
 import lombok.Getter;

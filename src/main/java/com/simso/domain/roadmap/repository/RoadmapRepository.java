@@ -1,7 +1,6 @@
-package com.simso.repository;
+package com.simso.domain.roadmap.repository;
 
-import com.simso.domain.Posts;
-import com.simso.domain.Roadmap;
+import com.simso.domain.roadmap.entity.Roadmap;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

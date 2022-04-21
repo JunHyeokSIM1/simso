@@ -1,12 +1,13 @@
 package com.simso.service;
 
-import com.simso.domain.Roadmap;
 import com.simso.domain.Role;
 import com.simso.domain.User;
+import com.simso.domain.roadmap.entity.Roadmap;
+import com.simso.domain.roadmap.exception.RoadmapNotFoundException;
 import com.simso.dto.UserResponseDto;
-import com.simso.dto.roadmap.RoadmapResponseDto;
-import com.simso.dto.roadmap.RoadmapSaveRequestDto;
-import com.simso.dto.roadmap.RoadmapUpdateRequestDto;
+import com.simso.domain.roadmap.dto.RoadmapResponseDto;
+import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
+import com.simso.domain.roadmap.dto.RoadmapUpdateRequestDto;
 import com.simso.repository.RoadmapRepository;
 import com.simso.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;

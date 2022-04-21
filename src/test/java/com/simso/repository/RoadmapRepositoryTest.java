@@ -1,6 +1,6 @@
 package com.simso.repository;
 
-import com.simso.domain.Roadmap;
+import com.simso.domain.roadmap.entity.Roadmap;
 import com.simso.domain.Role;
 import com.simso.domain.User;
 import org.junit.jupiter.api.DisplayName;

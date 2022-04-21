@@ -1,11 +1,12 @@
-package com.simso.service;
+package com.simso.domain.roadmap.service;
 
-import com.simso.domain.Roadmap;
+import com.simso.domain.roadmap.entity.Roadmap;
 import com.simso.domain.User;
-import com.simso.dto.roadmap.RoadmapResponseDto;
-import com.simso.dto.roadmap.RoadmapSaveRequestDto;
-import com.simso.dto.roadmap.RoadmapUpdateRequestDto;
-import com.simso.repository.RoadmapRepository;
+import com.simso.domain.roadmap.exception.RoadmapNotFoundException;
+import com.simso.domain.roadmap.dto.RoadmapResponseDto;
+import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
+import com.simso.domain.roadmap.dto.RoadmapUpdateRequestDto;
+import com.simso.domain.roadmap.repository.RoadmapRepository;
 import com.simso.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,14 +37,24 @@ public class RoadmapService {
                 Roadmap.createRoadmap(findByUser.orElse(null), requestDto));
         return save.getId();
     }
+
     /*
      *  로드맵 전부 조회
      *  */
     @Transactional(readOnly = true)
     public List<RoadmapResponseDto> findAllDesc() {
-        return  roadmapRepository.findALlDesc().stream()
+        return roadmapRepository.findALlDesc().stream()
                 .map(RoadmapResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    /*
+     *  로드맵 단건 조회
+     *  */
+    @Transactional(readOnly = true)
+    public RoadmapResponseDto findById(Long id) {
+        return new RoadmapResponseDto(roadmapRepository.findById(id)
+                .orElseThrow(RoadmapNotFoundException::new));
     }
 
     /*
@@ -52,7 +63,7 @@ public class RoadmapService {
     @Transactional
     public Long update(Long id, RoadmapUpdateRequestDto requestDto) {
         Roadmap roadmap = roadmapRepository.findById(id)
-                .orElseThrow(()->
+                .orElseThrow(() ->
                         new IllegalArgumentException("해당 게시글 없습니다.id=" + id));
 
         roadmap.update(requestDto.getTitle(), requestDto.getContent());
