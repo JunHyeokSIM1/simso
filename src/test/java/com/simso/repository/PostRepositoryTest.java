@@ -1,12 +1,12 @@
 package com.simso.repository;
 
-import com.simso.domain.Posts;
+import com.simso.domain.post.entity.Posts;
+import com.simso.domain.post.repository.PostsRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,8 +1,10 @@
 package com.simso.repository;
 
-import com.simso.domain.Roadmap;
-import com.simso.domain.Role;
-import com.simso.domain.User;
+import com.simso.domain.roadmap.entity.Roadmap;
+import com.simso.domain.user.entity.Role;
+import com.simso.domain.user.entity.User;
+import com.simso.domain.roadmap.repository.RoadmapRepository;
+import com.simso.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
