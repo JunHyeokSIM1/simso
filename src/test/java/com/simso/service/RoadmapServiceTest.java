@@ -1,15 +1,16 @@
 package com.simso.service;
 
-import com.simso.domain.Role;
-import com.simso.domain.User;
+import com.simso.domain.user.entity.Role;
+import com.simso.domain.user.entity.User;
 import com.simso.domain.roadmap.entity.Roadmap;
 import com.simso.domain.roadmap.exception.RoadmapNotFoundException;
-import com.simso.dto.UserResponseDto;
+import com.simso.domain.roadmap.service.RoadmapService;
+import com.simso.domain.user.dto.UserResponseDto;
 import com.simso.domain.roadmap.dto.RoadmapResponseDto;
 import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
 import com.simso.domain.roadmap.dto.RoadmapUpdateRequestDto;
-import com.simso.repository.RoadmapRepository;
-import com.simso.repository.UserRepository;
+import com.simso.domain.roadmap.repository.RoadmapRepository;
+import com.simso.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,8 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 class RoadmapServiceTest {
@@ -55,6 +55,7 @@ class RoadmapServiceTest {
         assertThat(register).isEqualTo(findByRoadmap.orElse(null).getId());
 
     }
+
     @DisplayName("등록된 로드맵을 조회한다")
     @Test
     public void findRoadmapList() {
@@ -141,20 +142,33 @@ class RoadmapServiceTest {
 
     }
 
-    @DisplayName("조회에서 예외 NoSuchElementException 발생")
+    @DisplayName("조회에서 예외 RoadmapNotFoundException 발생")
     @Test
-    public void findBySingleRoadMapNoSuchElementException() {
+    public void findSingle_RoadmapNotFoundException() {
+        //given
+        Long roadmapEntity = createRoadmapEntity();
+        roadmapService.remove(roadmapEntity);
+
+        //when
+        //then
+        assertThatThrownBy(() -> roadmapService.findById(roadmapEntity))
+                .isInstanceOf(RoadmapNotFoundException.class);
+    }
+
+    @DisplayName("조회에서 예외 RoadmapNotFoundException 발생하지 않는다")
+    @Test
+    public void findSingleNot_RoadmapNotFoundException() {
         //given
         Long roadmapEntity = createRoadmapEntity();
 
         //when
-        RoadmapResponseDto singleRoadmap = roadmapService.findById(roadmapEntity);
-
         //then
-        assertThat(singleRoadmap).isNotNull();
-        assertThat(singleRoadmap.getId()).isEqualTo(roadmapEntity);
+        assertThatNoException().isThrownBy(
+                () -> roadmapService.findById(roadmapEntity)
+        );
 
     }
+
 
     // 로드맵 등록하고 저장하는 부분
     private Long createRoadmapEntity() {
@@ -183,6 +197,5 @@ class RoadmapServiceTest {
                 .role(Role.USER)
                 .build());
     }
-
 
 }
