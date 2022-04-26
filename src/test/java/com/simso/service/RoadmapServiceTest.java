@@ -37,7 +37,7 @@ class RoadmapServiceTest {
         roadmapRepository.deleteAll();
     }
 
-    @DisplayName("로드맵 기본필드를 등록한다")
+    @DisplayName("등록한다 로드맵 기본필드를")
     @Test
     public void register() {
 
@@ -56,7 +56,7 @@ class RoadmapServiceTest {
 
     }
 
-    @DisplayName("등록된 로드맵을 조회한다")
+    @DisplayName("조회한다 등록된 로드맵을 ")
     @Test
     public void findRoadmapList() {
         //given
