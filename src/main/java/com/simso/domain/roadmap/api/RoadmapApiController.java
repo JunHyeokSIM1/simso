@@ -5,8 +5,10 @@ import com.simso.domain.roadmap.dto.RoadmapSaveRequestDto;
 import com.simso.domain.roadmap.dto.RoadmapUpdateRequestDto;
 import com.simso.domain.roadmap.service.RoadmapService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,8 +23,13 @@ public class RoadmapApiController {
     }
 
     @GetMapping("api/v1/roadmaps")
-    public List<RoadmapResponseDto> findList() {
-        return roadmapService.findAllDesc();
+    public ResponseEntity<List<RoadmapResponseDto>> findList() {
+        return ResponseEntity.ok(roadmapService.findAllDesc());
+    }
+
+    @GetMapping("api/v1/roadmaps/{id}")
+    public ResponseEntity<RoadmapResponseDto> findByRoadmap(@PathVariable Long id) {
+        return ResponseEntity.ok(roadmapService.findById(id));
     }
 
     @PatchMapping("api/v1/roadmaps/{id}")
