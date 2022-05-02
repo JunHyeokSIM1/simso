@@ -37,8 +37,10 @@ public class RoadmapApiController {
     }
 
     @DeleteMapping("api/v1/roadmaps/{id}")
-    public void delete(@PathVariable Long id)  {
+    public ResponseEntity<Void> delete(@PathVariable Long id)  {
         roadmapService.remove(id);
+
+        return ResponseEntity.ok().build();
     }
 
 }
