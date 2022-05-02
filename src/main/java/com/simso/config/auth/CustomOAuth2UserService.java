@@ -2,8 +2,8 @@ package com.simso.config.auth;
 
 import com.simso.config.auth.dto.OAuthAttributes;
 import com.simso.config.auth.dto.SessionUser;
-import com.simso.domain.User;
-import com.simso.repository.UserRepository;
+import com.simso.domain.user.entity.User;
+import com.simso.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

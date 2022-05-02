@@ -1,6 +1,6 @@
 package com.simso.config.auth.dto;
 
-import com.simso.domain.User;
+import com.simso.domain.user.entity.User;
 import lombok.Getter;
 
 import java.io.Serializable;

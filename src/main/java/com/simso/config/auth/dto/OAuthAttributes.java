@@ -1,7 +1,7 @@
 package com.simso.config.auth.dto;
 
-import com.simso.domain.Role;
-import com.simso.domain.User;
+import com.simso.domain.user.entity.Role;
+import com.simso.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 

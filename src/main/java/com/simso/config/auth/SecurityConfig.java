@@ -1,6 +1,6 @@
 package com.simso.config.auth;
 
-import com.simso.domain.Role;
+import com.simso.domain.user.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
