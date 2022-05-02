@@ -1,4 +1,5 @@
 # nero 로드맵 대시보드
+[![Build Status](https://app.travis-ci.com/neuruSim/simso.svg?branch=master)](https://app.travis-ci.com/neuruSim/simso)
 - 간단한 학습 로드맵을 작성할 수 있습니다
 - 데모 아직 미구현
 ## 사용된 기술
