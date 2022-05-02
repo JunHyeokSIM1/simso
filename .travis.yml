@@ -26,7 +26,7 @@ notifications:
 # jar 파일은인식하지 못하므로 jar 파일들을 모아 압축한다
 before_deploy:
   - zip -r simso * # 자신의 프로젝트 이름
-  - mkdir -p depoly # Travis CI가 실행중인 위치
+  - mkdir -p deploy # Travis CI가 실행중인 위치
   - mv simso.zip deploy/simso.zip
 # S3 파일 업로드 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
 deploy:
