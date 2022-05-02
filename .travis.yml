@@ -5,6 +5,8 @@ jdk:
 branches:
   only:
     - master
+before_install:
+  - chmod +x gradlew
 
 # Travis CI 서버의 home
 # gradle 의존을 받게되면 캐시하여 , 같은 의존은 안받음
