@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk11
 # 어느 브랜치에 푸시될때 수행할건지
 branches:
   only:
@@ -15,4 +15,9 @@ cache:
 
 # master 브랜치에 푸시될때 수행하는 명령어
 # gradlew clean, build 를 수행행
-cript: "./gradlew clean build"
+script: "./gradlew clean build"
+
+notifications:
+  email:
+    recipients:
+      - wnsgur765z@gmail.com
