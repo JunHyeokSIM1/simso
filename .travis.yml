@@ -19,10 +19,6 @@ cache:
 # gradlew clean, build 를 수행행
 script: "./gradlew clean build"
 
-notifications:
-  email:
-    recipients:
-      - wnsgur765z@gmail.com
 # jar 파일은인식하지 못하므로 jar 파일들을 모아 압축한다
 before_deploy:
   - zip -r simso * # 자신의 프로젝트 이름
@@ -40,3 +36,19 @@ deploy:
     acl: private # zip 파일 접근을 private으로
     local_dir: deploy # before_deploy에서 생성한 디렉토리로 이동한다. 해당 위치의 파일만 이동시킨다.
     wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: freelec-springboot-build3 # S3 버킷
+    key: simso.zip # 빌드 파일을 압축해서 전달
+    bundle_type: zip # 압축 확장자
+    application: freelec-springboot-webservice # 웹 콘솔에서 등록한 CodeDeploy 어플리케이션
+    deployment_group: freelec-springboot-webservice-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+notifications:
+  email:
+    recipients:
+      - wnsgur765z@gmail.com
