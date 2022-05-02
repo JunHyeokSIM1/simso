@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk11
 # 어느 브랜치에 푸시될때 수행할건지
 branches:
   only:
