@@ -7,6 +7,7 @@
 - web-framework : Spring Boot 2.4.0
 - ORM : JPA
 - Build Tool : Gradle
+- CI CD : Travis CI 연동
 ### 적용할 예정인 기술 (예정)
 - DB : My-sql
 - API-docs : Spring REST Docs
