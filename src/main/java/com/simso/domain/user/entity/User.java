@@ -1,5 +1,6 @@
 package com.simso.domain.user.entity;
 
+import com.simso.domain.ablity.entity.Ability;
 import com.simso.domain.roadmap.entity.Roadmap;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,6 +40,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Roadmap> roadmapList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userAbility", cascade = CascadeType.ALL)
+    private List<Ability> abilities;
 
     @Builder
     public User(String username, String password, String email, String picture, Role role) {
