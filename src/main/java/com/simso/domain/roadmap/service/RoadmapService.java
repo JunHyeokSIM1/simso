@@ -1,5 +1,6 @@
 package com.simso.domain.roadmap.service;
 
+import com.simso.domain.roadmap.dto.RoadmapsResponseDto;
 import com.simso.domain.roadmap.entity.Roadmap;
 import com.simso.domain.user.entity.User;
 import com.simso.domain.roadmap.exception.RoadmapNotFoundException;
@@ -42,10 +43,8 @@ public class RoadmapService {
      *  로드맵 전부 조회
      *  */
     @Transactional(readOnly = true)
-    public List<RoadmapResponseDto> findAllDesc() {
-        return roadmapRepository.findALlDesc().stream()
-                .map(RoadmapResponseDto::new)
-                .collect(Collectors.toList());
+    public RoadmapsResponseDto findAllDesc() {
+        return RoadmapsResponseDto.of(roadmapRepository.findALlDesc());
     }
 
     /*
@@ -63,9 +62,7 @@ public class RoadmapService {
     @Transactional
     public Long update(Long id, RoadmapUpdateRequestDto requestDto) {
         Roadmap roadmap = roadmapRepository.findById(id)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("해당 게시글 없습니다.id=" + id));
-
+                .orElseThrow(RoadmapNotFoundException::new);
         roadmap.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
