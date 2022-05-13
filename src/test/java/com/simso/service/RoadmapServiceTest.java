@@ -1,5 +1,6 @@
 package com.simso.service;
 
+import com.simso.domain.roadmap.dto.RoadmapsResponseDto;
 import com.simso.domain.user.entity.Role;
 import com.simso.domain.user.entity.User;
 import com.simso.domain.roadmap.entity.Roadmap;
@@ -19,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -65,16 +67,27 @@ class RoadmapServiceTest {
         UserResponseDto responseDto = new UserResponseDto(findUser.orElse(null));
 
         RoadmapSaveRequestDto requestDto = createRoadmapRequestDto(responseDto);
-        RoadmapSaveRequestDto requestDto2 = createRoadmapRequestDto(responseDto);
+        RoadmapSaveRequestDto requestDto2 = createRoadmapRequestDto2(responseDto);
         roadmapService.register(requestDto);
         roadmapService.register(requestDto2);
 
         //when
-        List<RoadmapResponseDto> findAll = roadmapService.findAllDesc();
+        List<String> collect =  roadmapService.findAllDesc()
+                .getRoadmapResponseList()
+                .stream()
+                .map(RoadmapResponseDto::getTitle)
+                .collect(Collectors.toList());
 
         //then
-        assertThat(findAll.size()).isEqualTo(2);
+        assertThat(collect).containsExactly(requestDto2.getTitle(), requestDto.getTitle());
+        assertThat(collect).contains(
+                requestDto.getTitle(),
+                requestDto2.getTitle()
+        );
+
+
     }
+
 
     @DisplayName("수정한다 로드맵을")
     @Test
@@ -98,7 +111,7 @@ class RoadmapServiceTest {
 
     }
 
-    @DisplayName("수정상황에서 IllegalArgumentException 예외 발생")
+    @DisplayName("수정상황에서 RoadmapNotFoundException 예외 발생")
     @Test
     public void updateIllegalArgumentException() {
         //given
@@ -107,8 +120,8 @@ class RoadmapServiceTest {
 
         //when
         //then
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> roadmapService.update(1000L, requestDto));
+        assertThatThrownBy(() -> roadmapService.update(1000L, requestDto))
+                .isInstanceOf(RoadmapNotFoundException.class);
     }
 
     @DisplayName("삭제한다 로드맵을")
@@ -185,6 +198,15 @@ class RoadmapServiceTest {
         return RoadmapSaveRequestDto.builder()
                 .title("테스트 타이틀")
                 .content("테스트 본문")
+                .userId(responseDto.getId())
+                .build();
+    }
+
+    // 로드맵 create save Request dto
+    private RoadmapSaveRequestDto createRoadmapRequestDto2(UserResponseDto responseDto) {
+        return RoadmapSaveRequestDto.builder()
+                .title("테스트 타이틀2")
+                .content("테스트 본문2")
                 .userId(responseDto.getId())
                 .build();
     }
