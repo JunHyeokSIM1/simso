@@ -1,4 +1,4 @@
-package com.simso.domain.ablity.entity;
+package com.simso.domain.ability.entity;
 
 import com.simso.domain.user.entity.User;
 import lombok.Builder;

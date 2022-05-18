@@ -1,6 +1,6 @@
-package com.simso.domain.ablity.repository;
+package com.simso.domain.ability.repository;
 
-import com.simso.domain.ablity.entity.Ability;
+import com.simso.domain.ability.entity.Ability;
 import com.simso.domain.user.entity.Role;
 import com.simso.domain.user.entity.User;
 import com.simso.domain.user.repository.UserRepository;

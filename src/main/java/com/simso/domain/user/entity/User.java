@@ -1,6 +1,6 @@
 package com.simso.domain.user.entity;
 
-import com.simso.domain.ablity.entity.Ability;
+import com.simso.domain.ability.entity.Ability;
 import com.simso.domain.roadmap.entity.Roadmap;
 import lombok.Builder;
 import lombok.Getter;

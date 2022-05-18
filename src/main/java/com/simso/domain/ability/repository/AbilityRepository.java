@@ -1,6 +1,6 @@
-package com.simso.domain.ablity.repository;
+package com.simso.domain.ability.repository;
 
-import com.simso.domain.ablity.entity.Ability;
+import com.simso.domain.ability.entity.Ability;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AbilityRepository extends JpaRepository<Ability, Long> {
