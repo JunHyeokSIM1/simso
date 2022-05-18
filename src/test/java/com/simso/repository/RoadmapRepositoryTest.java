@@ -18,7 +18,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class RoadmapRepositoryTest {
 
     @Autowired
@@ -30,7 +30,6 @@ class RoadmapRepositoryTest {
 
     @DisplayName("로드맵 필드값을 저장한다")
     @Test
-    @Rollback(value = false)
     public void save() {
         // given
         String title = "테스트 타이틀";
@@ -101,7 +100,7 @@ class RoadmapRepositoryTest {
     }
 
     @DisplayName("불러온다 여러건 저장한 값")
-    @Rollback(value = false)
+
     @Test
     public void getRoadmapList() {
         //given
