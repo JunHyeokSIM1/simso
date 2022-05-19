@@ -41,6 +41,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.postgresql/postgresql
 	//implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.3'
 	implementation 'mysql:mysql-connector-java'
+	// mockito
+	testImplementation 'org.mockito:mockito-junit-jupiter'
 
 }
 dependencyManagement {
