@@ -5,6 +5,7 @@ import com.simso.domain.user.dto.UserResponseDto;
 import com.simso.domain.user.dto.UserSaveRequestDto;
 import com.simso.domain.user.dto.UserUpdateRequestDto;
 import com.simso.domain.user.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,15 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Transactional
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-
-        this.userRepository = userRepository;
-    }
 
     public Long register(UserSaveRequestDto requestDto){
 
