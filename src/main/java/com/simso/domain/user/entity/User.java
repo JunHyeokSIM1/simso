@@ -45,12 +45,19 @@ public class User {
     private List<Ability> abilities;
 
     @Builder
-    public User(String username, String password, String email, String picture, Role role) {
+    public User(Long id,
+                String username,
+                String password,
+                String email,
+                String picture,
+                Role role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.picture = picture;
         this.role = role;
+        this.abilities = new ArrayList<>();
     }
 
     public User update(String username, String picture) {
