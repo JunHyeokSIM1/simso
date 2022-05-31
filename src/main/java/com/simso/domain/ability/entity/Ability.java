@@ -56,5 +56,13 @@ public class Ability {
                 .build();
     }
 
-
+    /*  업데이트 */
+    public void update (Ability ability) {
+        this.abilityId = ability.abilityId;
+        this.attackPower = ability.attackPower;
+        this.defensivePower = ability.defensivePower;
+        this.hit = ability.hit;
+        this.critical = ability.critical;
+        this.userAbility = ability.userAbility;
+    }
 }

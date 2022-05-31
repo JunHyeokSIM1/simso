@@ -1,5 +1,7 @@
 package com.simso.domain.ability.service;
 
+import com.simso.domain.ability.dto.AbilitiesResponseDto;
+import com.simso.domain.ability.entity.Ability;
 import com.simso.domain.ability.repository.AbilityRepository;
 import com.simso.domain.user.entity.Role;
 import com.simso.domain.user.entity.User;
@@ -12,8 +14,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -26,6 +30,7 @@ class AbilityServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
 
     @InjectMocks
     private AbilityService abilityService;
@@ -49,5 +54,37 @@ class AbilityServiceTest {
         //then
         verify(abilityRepository, times(1)).save(any());
     }
+
+    @DisplayName("조회한다 능력치 리스트를")
+    @Test
+    void findAbilities() {
+        //given
+        User user = User.builder()
+                .username("testUser")
+                .password("1234")
+                .role(Role.USER)
+                .build();
+        List<Ability> abilities = List.of(Ability.createAbility(user));
+        when(abilityRepository.findAll()).thenReturn(abilities);
+
+        //when
+        abilityService.findAbilities();
+
+        //then
+        verify(abilityRepository, times(1)).findAll();
+        assertThat(abilityService.findAbilities().getClass()).isEqualTo(AbilitiesResponseDto.class);
+    }
+
+    @DisplayName("삭제한다 능력치를")
+    @Test
+    void remove() {
+
+        //when
+        abilityService.remove(any());
+
+        // then
+        verify(abilityRepository, times(1)).deleteById(any());
+    }
+
 
 }
