@@ -31,15 +31,15 @@ class AbilityRepositoryTest {
 
         //when
         Ability save = abilityRepository.save(Ability.builder()
-                .keywordScore(1)
-                .informationPowerScore(2)
-                .visitors(4)
-                .updateFrequency(1)
-                .user(user)
-                .build());
+                        .attackPower(1)
+                        .defensivePower(1)
+                        .hit(1)
+                        .critical(1)
+                        .userAbility(user)
+                        .build());
 
         //then
-        assertThat(save.getKeywordScore()).isEqualTo(1);
+        assertThat(save.getAttackPower()).isEqualTo(1);
     }
 
     @DisplayName("조회한다 능력치를")
@@ -76,12 +76,13 @@ class AbilityRepositoryTest {
 
     private Ability getAbility(User user) {
         return abilityRepository.save(Ability.builder()
-                    .keywordScore(1)
-                    .informationPowerScore(1)
-                    .visitors(1)
-                    .updateFrequency(1)
-                    .user(user)
-                    .build());
+                .attackPower(1)
+                .defensivePower(1)
+                .hit(1)
+                .critical(1)
+                .userAbility(user)
+                .build());
+
     }
 
     // user create save Request dto
